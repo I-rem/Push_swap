@@ -31,7 +31,7 @@ Your goal is to write 2 programs in C:
 
 • Within your mandatory part you are allowed to use the following functions:
 
-◦ write ◦ read ◦ malloc ◦ free ◦ exit
+`write` `read` `malloc` `free` `exit`
 
 ## Evaluation
 
@@ -51,12 +51,12 @@ Pay attention to the amount of memory used by push_swap (using the command top f
 
 No points will be awarded for this section if at least one check fails.
 
-- Run checker with non numeric parameters. The program must display "Error"
-- Run checker with a duplicate numeric parameter. The program must display "Error"
-- Run checker with only numeric parameters including one greater than MAXINT. The program must display "Error"
+- Run checker with non numeric parameters. The program must display **"Error"**
+- Run checker with a duplicate numeric parameter. The program must display **"Error"**
+- Run checker with only numeric parameters including one greater than MAXINT. The program must display **"Error"**
 - Run checker without any parameters. The program must display anything and give the prompt back.
-- Run checker with valid parameters, and write an action that doesn't exist during the instruction phase. The program must display "Error"
-- Ruc checker with valid parameters, and write an action with one or several spaces before and/or after the action during the instruction phase. The program must display "Error".
+- Run checker with valid parameters, and write an action that doesn't exist during the instruction phase. The program must display **"Error"**
+- Ruc checker with valid parameters, and write an action with one or several spaces before and/or after the action during the instruction phase. The program must display **"Error"**.
 
 #### Checker program - False tests
 
@@ -67,10 +67,10 @@ Don't forget to press CTRL+D to stop reading during the infruction phase.
 
 - Run checker with the following command `$>./checker 0 9 1 8 2
 7 3 6 4 5` then write the following valid action list
-`"[sa, pb, rrr]"`. Checker should display *"KO"*.
+`"[sa, pb, rrr]"`. Checker should display **"KO"**.
 
 - Run checker with a valid list as parameter of your choice then write a valid instruction list that doesn't order the integers.
-Checker should display *"KO"*. You'll have to specifically check that the program wasn't developed to only answer correctly
+Checker should display **"KO"**. You'll have to specifically check that the program wasn't developed to only answer correctly
 on the test included in this scale. You should repeat this test couple of times with several permutations before you validate it.
 
 #### Checker program - Right tests
@@ -111,8 +111,8 @@ program should display nothing (O instruction).
 If the following test fails, no points will be awarded
 for this section. Move to the next one.
 
-- Run "$>ARG="2 1 0"; ./push_swap $ARG | ./checker $ARG".
-Check that the checker program displays "OK" and that
+- Run `$>ARG="2 1 0"; ./push_swap $ARG | ./checker $ARG"`.
+Check that the checker program displays **OK** and that
 
 the size of the list of instructions from push_swap is
 
@@ -124,13 +124,13 @@ Execute the following 2 tests. If at least one fails,
 no points will be awarded for this section. Move to
 the next one.
 
-- Run "$>ARG="1 52 4 3"; ./push_swap $ARG | ./checker
-$ARG". Check that the checker program displays "OK" and that the size of the list of instructions from
+- Run `$>ARG="1 52 4 3"; ./push_swap $ARG | ./checker
+$ARG`. Check that the checker program displays "OK" and that the size of the list of instructions from
 push_swap isn't more than 12. Kudos if the size of
 the list of instructions is 8.
 
-- Run "$>ARG="<5 random values>"; ./push_swap $ARG |
-./ checker $ARG" and replace the placeholder by 5 random
+- Run `$>ARG="<5 random values>"; ./push_swap $ARG |
+./ checker $ARG` and replace the placeholder by 5 random
 valid values. Check that the checker program displays
 "OK" and that the size of the list of instructions
 from push_swap isn't more than 12. Otherwise this test
@@ -145,8 +145,8 @@ validate it.
 If the following test fails, no points will be awarded
 for this section. Move to the next one.
 
-- Run "$>ARG="<100 random values>"; ./push_swap $ARG |
-./ checker $ARG" and replace the placeholder by 100 random
+- Run `$>ARG="<100 random values>"; ./push_swap $ARG |
+./ checker $ARG`. and replace the placeholder by 100 random
 valid values. Check that the checker program displays
 "OK" and then give a grade based on the size of the list
 of instructions:
@@ -166,10 +166,9 @@ Rate it from O (failed) through 5 (excellent)
 If the following test fails, no points will be awarded
 for this section.
 
-- Run "$>ARG="<500 random values>"; ./push_swap $ARG |
-./ checker $ARG" and replace the placeholder by 500
-random valid values (One is not called John/Jane Script
-for nothing) Check that the checker program displays "OK"
+- Run `$>ARG="<500 random values>"; ./push_swap $ARG |
+./ checker $ARG` and replace the placeholder by 500
+random valid values. Check that the checker program displays **"OK"**
 and then give a grade based on the size of the list
 of instructions:
 
