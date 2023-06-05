@@ -1,15 +1,52 @@
 #include "push_swap.h"
 
-int	ft_atoi(int num)
+int	ft_atoi(const char *str)
 {
-	
+	long	result;
+	int		sign;
+
+	result = 0;
+	sign = 1;
+	while (*str == 32 || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sign *= -1;
+		str++;
+	}
+	while (*str >= '0' && *str <= '9')
+	{
+		result = result * 10 + *str - 48;
+		str++;
+		if (result * sign > 2147483647) // We need a way to handle these errors
+			return (-1);
+		else if (result * sign < -2147483648)
+			return (0);
+	}
+	return (result * sign);
 }
 
 int	arg_check(char *argv)
 {
-	//if all args are number return 1
-	//else return 0	
-	//This can directly call order check too depending on the line num
+	int	i;
+	int	sign;
+	
+	i = 0;
+	sign = 0;
+	while (argv[i] != '\0')
+	{
+		if (argv[i] == '-' || argv[i] == '+')
+		{
+			sign++;
+			if (sign > 1)
+				return (0);
+		}
+		if (argv[i] < '0' || argv[i] > '9')
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 int	order_check(char *argv)
@@ -25,9 +62,12 @@ int main(int argc, char *argv)
 {
 	if (argc > 2)
 		if (arg_check(argv))
+		{
+			//initialize the first stack
 			if (!order_check(argv))
 			{
-				
+				//initialize the second stack		
 			}
+		}
 	return (0);
 }
