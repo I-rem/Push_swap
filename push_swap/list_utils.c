@@ -1,6 +1,6 @@
-using "push_swap.h"
+#include "push_swap.h"
 
-t_list	*ft_lstnew(void *content)
+t_list	*ft_lstnew(int content)
 {
 	t_list	*new;
 
@@ -30,7 +30,7 @@ int	ft_lstsize(t_list *lst)
 	}
 	return (size);
 }
-
+/*
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
 	if (lst == NULL || del == NULL)
@@ -52,4 +52,5 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 		(*lst) = temp;
 	}
 	*lst = NULL;
-}
+}*/
+

@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int	ft_atoi(const char *str)
+int	ft_atoi(char *str)
 {
 	long	result;
 	int		sign;
@@ -49,25 +49,42 @@ int	arg_check(char *argv)
 	return (1);
 }
 
-int	order_check(char *argv)
+int	order_check(char **argv)
 {
 	int	i;
-	int min;
 	
-	i = 1;
-	min =	
+	i = 2;
+    while (argv[i] != NULL)
+    {
+        if (argv[i] < argv[i - 1])
+            return (0);
+        i++;
+    }
+    return (1);
 }
 
-int main(int argc, char *argv)
+int main(int argc, char **argv)
 {
+	t_list *a;
+	t_list *b;
+	
 	if (argc > 2)
-		if (arg_check(argv))
+		if (arg_check(argv[1]))
 		{
-			//initialize the first stack
-			if (!order_check(argv))
+            if (!order_check(argv))
 			{
-				//initialize the second stack		
+                //initialize the first stack
+                a = ft_lstnew(ft_atoi(argv[1]));
+                argv++;
+                while (argv[1] != NULL)
+                {
+                    ft_lstadd_front(&a, ft_lstnew(ft_atoi(argv[1])));
+                    argv++;
+                }
+                
+                    //initialize the second stack		
 			}
 		}
 	return (0);
 }
+
