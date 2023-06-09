@@ -75,14 +75,14 @@ int main(int argc, char **argv)
 			{
                 //initialize the first stack
                 a = ft_lstnew(ft_atoi(argv[1]));
-                argv++;
-                while (argv[1] != NULL)
+                argv += 2;
+                while (*argv != NULL)
                 {
-                    ft_lstadd_front(&a, ft_lstnew(ft_atoi(argv[1])));
+                    ft_lstadd_front(&a, ft_lstnew(ft_atoi(*argv)));
                     argv++;
                 }
-                
-                    //initialize the second stack	
+                if (argc < 5)
+                    little_sort(a, argc);
                     return (0);	
 			}
 		}
