@@ -56,7 +56,7 @@ int	order_check(char **argv)
 	i = 2;
     while (argv[i] != NULL)
     {
-        if (argv[i] < argv[i - 1])
+        if (ft_atoi(argv[i]) < ft_atoi(argv[i - 1]))
             return (0);
         i++;
     }
@@ -82,7 +82,8 @@ int main(int argc, char **argv)
                     argv++;
                 }
                 
-                    //initialize the second stack		
+                    //initialize the second stack	
+                    return (0);	
 			}
 		}
 	return (0);
