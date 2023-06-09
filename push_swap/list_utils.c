@@ -12,12 +12,35 @@ t_list	*ft_lstnew(int content)
 	return (new);
 }
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+t_list	*ft_lstlast(t_list *lst)
 {
-	new -> next = *lst;
-	*lst = new;
+	if (!lst)
+		return (0);
+	while (lst != NULL)
+	{
+		if (lst -> next == NULL)
+			return (lst);
+		lst = lst -> next;
+	}
+	return (lst);
 }
 
+void	ft_lstadd_back(t_list **lst, t_list *new)
+{
+	t_list	*last;
+
+	if (lst == NULL || new == NULL)
+		return ;
+	if (*lst == NULL)
+		*lst = new;
+	else
+	{
+		last = ft_lstlast(*lst);
+		last -> next = new;
+	}
+}
+
+/*
 int	ft_lstsize(t_list *lst)
 {
 	int	size;
@@ -30,6 +53,8 @@ int	ft_lstsize(t_list *lst)
 	}
 	return (size);
 }
+*/
+
 /*
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {

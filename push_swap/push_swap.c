@@ -78,7 +78,7 @@ int main(int argc, char **argv)
                 argv += 2;
                 while (*argv != NULL)
                 {
-                    ft_lstadd_front(&a, ft_lstnew(ft_atoi(*argv)));
+                    ft_lstadd_back(&a, ft_lstnew(ft_atoi(*argv)));
                     argv++;
                 }
                 if (argc < 5)
