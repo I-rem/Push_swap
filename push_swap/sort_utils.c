@@ -1,8 +1,41 @@
 #include "push_swap.h"
 
-void    four_sort(t_list *lst)
+int is_sorted(t_list *lst)
 {
-    return ;
+    while (lst -> next != NULL)
+    {
+        if (lst -> content < lst -> next -> content)
+            lst = lst -> next;
+        else
+            return (0);
+    }
+    return (1);
+}
+void    four_sort(t_list *lst, t_list *lst_b)
+{
+    int min;
+    t_list  *temp;
+
+    if (!is_ordered(lst))
+    {
+        temp = lst;
+        min = temp -> content;
+        while (temp -> next != NULL)
+        {
+            if (temp -> next -> content < min)
+                min = temp -> next -> content;
+            temp = temp -> next;
+        }
+        if (lst -> content == min)
+            //push b
+        else if (lst -> next -> content == min)
+            //sa
+        else
+            rra
+        four_sort(lst, lst_b)  
+    }
+    while (ft_lst_size(lst_b) != 0)
+        // push a
 }
 
 void    little_sort(t_list *lst, int argc)
@@ -28,6 +61,6 @@ void    little_sort(t_list *lst, int argc)
             write (1, "sa\n", 3);
     }
     else if (argc == 5)
-        four_sort(lst);
+        four_sort(lst, NULL);
 }
 
