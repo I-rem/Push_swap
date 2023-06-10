@@ -5,22 +5,58 @@ void	delete()
 	
 }
 
-void swap(t_stack *stack)
+void swap(t_list **stack, char mode)
 {
+    t_list *temp;
 
+    temp = *stack;
+    *stack = *stack -> next;
+    *stack -> next = temp;
+    write(1, "s", 1);
+    write(1, &mode, 1);
+    write(1, "\n", 1);
 }
 
-void push(t_stack *stack)
+void push(t_list **src_stack, t_list **dst_stack, char mode)
 {
-
-}
-
-void rotate(t_stack *stack)
-{
-
-}
-
-void reverse_rotate(t_stack *stack)
-{
+    int element;
+    t_list *temp;
     
+    temp = *src_stack;
+    element = (*src_stack)->content;
+    *src_stack = (*src_stack)->next;
+    free(temp);
+    t_list *newNode = (t_list *)malloc(sizeof(t_list));
+    newNode->content = element;
+    newNode->next = *dst_stack;
+    *dst_stack = newNode;
+    write(1, "p", 1);
+    write(1, &mode, 1);
+    write(1, "\n", 1);
 }
+
+void rotate(t_list **stack, char mode)
+{
+    t_list *temp;
+
+    ft_lstlast(*stack) -> next = stack;
+    *stack -> next = NULL;
+    write(1, "r", 1);
+    write(1, &mode, 1);
+    write(1, "\n", 1);
+}
+
+void reverse_rotate(t_list **stack, char mode)
+{
+    t_list *temp;
+
+    temp = *stack;
+    while (temp -> next != ft_lstlast(*stack))
+        temp = temp -> next;
+    ft_lstlast(*stack) -> next = *stack;
+    temp -> next = NULL;
+    write(1, "rr", 2);
+    write(1, &mode, 1);
+    write(1, "\n", 1);
+}
+
