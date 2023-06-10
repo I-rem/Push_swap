@@ -50,12 +50,15 @@ void rotate(t_list **stack, char mode)
 void reverse_rotate(t_list **stack, char mode)
 {
     t_list *temp;
-
+    t_list *temp2;
+    
     temp = *stack;
-    while (temp -> next != ft_lstlast(*stack))
-        temp = temp -> next;
-    ft_lstlast(*stack) -> next = *stack;
-    temp -> next = NULL;
+    temp2 = *stack;
+    while (temp2 -> next -> next != NULL)
+        temp2 = temp2 -> next;
+    *stack = ft_lstlast(*stack);
+    (*stack) -> next = temp;
+    temp2 -> next = NULL;
     write(1, "rr", 2);
     write(1, &mode, 1);
     write(1, "\n", 1);
