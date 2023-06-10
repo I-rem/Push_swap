@@ -1,17 +1,18 @@
 #include "push_swap.h"
-
+/*
 void	delete()
 {
 	
 }
-
+*/
 void swap(t_list **stack, char mode)
 {
     t_list *temp;
 
     temp = *stack;
-    *stack = *stack -> next;
-    *stack -> next = temp;
+    *stack = (*stack) -> next;
+    temp -> next = (*stack) -> next;
+    (*stack) -> next = temp;
     write(1, "s", 1);
     write(1, &mode, 1);
     write(1, "\n", 1);
@@ -39,8 +40,8 @@ void rotate(t_list **stack, char mode)
 {
     t_list *temp;
 
-    ft_lstlast(*stack) -> next = stack;
-    *stack -> next = NULL;
+    ft_lstlast(*stack) -> next = *stack;
+    (*stack) -> next = NULL;
     write(1, "r", 1);
     write(1, &mode, 1);
     write(1, "\n", 1);

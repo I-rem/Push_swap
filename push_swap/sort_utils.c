@@ -1,7 +1,7 @@
 #include "push_swap.h"
-
 int is_sorted(t_list *lst)
 {
+
     while (lst -> next != NULL)
     {
         if (lst -> content < lst -> next -> content)
@@ -11,14 +11,22 @@ int is_sorted(t_list *lst)
     }
     return (1);
 }
-void    four_sort(t_list *lst, t_list *lst_b)
+
+void    medium_sort(t_list **lst, t_list **lst_b)
 {
     int min;
     t_list  *temp;
 
-    if (!is_ordered(lst))
+    //char num = (*lst) -> content + '0';
+    //write(1, &num, 1);
+    if (is_sorted(*lst) && ft_lstsize(*lst_b) != 1)
     {
-        temp = lst;
+        push(lst_b, lst, 'a');
+        medium_sort(lst, lst_b); 
+    }
+    else if (!is_sorted(*lst))
+    {
+        temp = *lst;
         min = temp -> content;
         while (temp -> next != NULL)
         {
@@ -26,19 +34,17 @@ void    four_sort(t_list *lst, t_list *lst_b)
                 min = temp -> next -> content;
             temp = temp -> next;
         }
-        if (lst -> content == min)
-            //push b
-        else if (lst -> next -> content == min)
-            //sa
+        if ((*lst) -> content == min)
+            push(lst, lst_b, 'b');
+        else if ((*lst) -> next -> content == min)
+            swap(lst, 'a');
         else
-            rra
-        four_sort(lst, lst_b)  
+            reverse_rotate(lst, 'a');
+        medium_sort(lst, lst_b); 
     }
-    while (ft_lst_size(lst_b) != 0)
-        // push a
 }
 
-void    little_sort(t_list *lst, int argc)
+void    little_sort(t_list *lst, t_list **lst_b, int argc)
 {
     if (argc == 3)
         write (1, "sa\n", 3);
@@ -60,7 +66,7 @@ void    little_sort(t_list *lst, int argc)
         else
             write (1, "sa\n", 3);
     }
-    else if (argc == 5)
-        four_sort(lst, NULL);
+    else if (argc == 5 || argc == 6)
+        medium_sort(&lst, lst_b);
 }
 

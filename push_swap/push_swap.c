@@ -73,7 +73,6 @@ int main(int argc, char **argv)
 		{
             if (!order_check(argv))
 			{
-                //initialize the first stack
                 a = ft_lstnew(ft_atoi(argv[1]));
                 argv += 2;
                 while (*argv != NULL)
@@ -81,9 +80,12 @@ int main(int argc, char **argv)
                     ft_lstadd_back(&a, ft_lstnew(ft_atoi(*argv)));
                     argv++;
                 }
-                if (argc < 5)
-                    little_sort(a, argc);
-                    return (0);	
+                b = (t_list *)malloc(sizeof(t_list));
+                if (argc <= 6)
+                    little_sort(a, &b, argc);
+                //else
+                    //big_sort(a, argc);
+                return (0);	
 			}
 		}
 	return (0);
