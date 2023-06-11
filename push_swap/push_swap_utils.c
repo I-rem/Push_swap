@@ -39,9 +39,13 @@ void push(t_list **src_stack, t_list **dst_stack, char mode)
 void rotate(t_list **stack, char mode)
 {
     t_list *temp;
+    t_list *temp2;
 
-    ft_lstlast(*stack) -> next = *stack;
-    (*stack) -> next = NULL;
+    temp = ft_lstlast(*stack);
+    temp2 = *stack;
+    temp -> next = *stack;
+    *stack = (*stack) -> next;
+    temp2 -> next = NULL;
     write(1, "r", 1);
     write(1, &mode, 1);
     write(1, "\n", 1);
