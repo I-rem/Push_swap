@@ -1,4 +1,33 @@
 #include "push_swap.h"
+int find_min(t_list *lst)
+{
+    int min = lst->content;
+    lst = lst->next;
+
+    while (lst != NULL)
+    {
+        if (lst->content < min)
+            min = lst->content;
+        lst = lst->next;
+    }
+
+    return min;
+}
+
+int find_max(t_list *lst)
+{
+    int max = lst->content;
+    lst = lst->next;
+
+    while (lst != NULL)
+    {
+        if (lst->content > max)
+            max = lst->content;
+        lst = lst->next;
+    }
+
+    return max;
+}
 int is_sorted(t_list *lst)
 {
 
@@ -69,4 +98,70 @@ void    little_sort(t_list *lst, t_list **lst_b, int argc)
     else if (argc == 5 || argc == 6)
         medium_sort(&lst, lst_b);
 }
+
+int get_pivot(t_list *lst, int size)
+{
+    int count = 0;
+    int sum = 0;
+
+    while (lst && count < size)
+    {
+        sum += lst->content;
+        lst = lst->next;
+        count++;
+    }
+
+    return sum / size;
+}
+
+
+void big_sort(t_list **lst_a, t_list **lst_b)
+{
+    int size = ft_lstsize(*lst_a);
+
+    if (is_sorted(*lst_a))
+        return;
+
+    if (size <= 3)
+    {
+        if (size == 2 && (*lst_a)->content > (*lst_a)->next->content)
+            swap(lst_a, 'a');
+        else if (size == 3)
+            little_sort(*lst_a, lst_b, 3);
+        return;
+    }
+
+    int pivot = get_pivot(*lst_a, size);
+    int count = 0;
+
+    while (count < size)
+    {
+        if ((*lst_a)->content < pivot)
+        {
+            push(lst_a, lst_b, 'b');
+            count++;
+        }
+        else
+        {
+            rotate(lst_a, 'a');
+            count++;
+        }
+    }
+
+    big_sort(lst_a, lst_b);
+    //big_sort(lst_b, lst_a);
+
+    while (ft_lstsize(*lst_b) != 1)
+        push(lst_b, lst_a, 'a');
+}
+
+
+
+
+
+
+
+
+
+
 
