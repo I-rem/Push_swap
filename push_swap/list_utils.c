@@ -54,28 +54,18 @@ int	ft_lstsize(t_list *lst)
 	return (size);
 }
 
-
-/*
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
-{
-	if (lst == NULL || del == NULL)
-		return ;
-	del(lst->content);
-	free(lst);
-}
-
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_lstclear(t_list **lst)
 {
 	t_list	*temp;
 
-	if (lst == NULL || del == NULL)
+	if (!lst)
 		return ;
 	while (*lst != NULL)
 	{
 		temp = (*lst)-> next;
-		ft_lstdelone(*lst, del);
+		free(*lst);
 		(*lst) = temp;
 	}
 	*lst = NULL;
-}*/
+}
 

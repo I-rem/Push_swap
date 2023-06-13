@@ -60,6 +60,7 @@ int	order_check(char **argv)
             return (0);
         i++;
     }
+    // TO DO: Why not put duplicate check here
     return (1);
 }
 
@@ -74,17 +75,15 @@ int main(int argc, char **argv)
             if (!order_check(argv))
 			{
                 a = ft_lstnew(ft_atoi(argv[1]));
-                argv += 2;
-                while (*argv != NULL)
-                {
+                while (*(++argv) != NULL)
                     ft_lstadd_back(&a, ft_lstnew(ft_atoi(*argv)));
-                    argv++;
-                }
-                b = (t_list *)malloc(sizeof(t_list));
-                if (argc <= 6)
-                    little_sort(a, &b, argc);
-                //else
-                    //big_sort(a, argc);
+                b = NULL;
+                if (argc <= 5)
+                    little_sort(a, &b, argc, 'a');
+                else
+                    big_sort(&a, &b, 'a');
+                ft_lstclear(&a);
+                ft_lstclear(&a);
                 return (0);	
 			}
 		}
