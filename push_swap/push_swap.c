@@ -27,25 +27,32 @@ int	ft_atoi(char *str)
 	return (result * sign);
 }
 
-int	arg_check(char *argv)
+int	arg_check(char **argv)
 {
-	int	i;
-	int	sign;
-	
-	i = 0;
-	sign = 0;
-	while (argv[i] != '\0')
-	{
-		if (argv[i] == '-' || argv[i] == '+')
-		{
-			sign++;
-			if (sign > 1)
-				return (0);
-		}
-		if (argv[i] < '0' || argv[i] > '9')
-			return (0);
-		i++;
-	}
+	int i;
+    int j;
+	int sign;
+
+	i = 1;
+    while (argv[i] != NULL)
+    {
+        
+        sign = 0;
+        j = 0;
+        while (argv[i][j] != '\0')
+        {
+            if (argv[i][j] == '-' || argv[i][j] == '+')
+            {
+                sign++;
+                if (sign > 1)
+                    return (0);
+            }
+            else if (argv[i][j] < '0' || argv[i][j] > '9')
+                return (0);
+            j++;
+        }
+        i++;
+    }
 	return (1);
 }
 
@@ -66,7 +73,6 @@ int	order_check(char **argv)
         }
         i++;
     }
-
 	i = 2;
     while (argv[i] != NULL)
     {
@@ -84,7 +90,7 @@ int main(int argc, char **argv)
 	t_list *b;
 	
 	if (argc > 2)
-		if (arg_check(argv[1]))
+		if (arg_check(argv))
 		{
             if (!order_check(argv))
 			{
