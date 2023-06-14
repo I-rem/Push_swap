@@ -52,15 +52,29 @@ int	arg_check(char *argv)
 int	order_check(char **argv)
 {
 	int	i;
-	
+	int j;
+
+    i = 1;
+    while(argv[i] != NULL)
+    {
+        j = i + 1;
+        while(argv[j] != NULL)
+        {
+            if (argv[i] == argv[j])
+                return (1);
+            j++;
+        }
+        i++;
+    }
+
 	i = 2;
     while (argv[i] != NULL)
     {
         if (ft_atoi(argv[i]) < ft_atoi(argv[i - 1]))
             return (0);
         i++;
-    }
-    // TO DO: Why not put duplicate check here
+    } 
+
     return (1);
 }
 
@@ -75,6 +89,7 @@ int main(int argc, char **argv)
             if (!order_check(argv))
 			{
                 a = ft_lstnew(ft_atoi(argv[1]));
+                argv++;
                 while (*(++argv) != NULL)
                     ft_lstadd_back(&a, ft_lstnew(ft_atoi(*argv)));
                 b = NULL;
