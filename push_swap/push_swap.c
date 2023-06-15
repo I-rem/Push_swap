@@ -67,7 +67,7 @@ int	order_check(char **argv)
         j = i + 1;
         while(argv[j] != NULL)
         {
-            if (argv[i] == argv[j])
+            if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
                 return (1);
             j++;
         }
