@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int	ft_atoi(char *str)
+long	ft_atoi(char *str)
 {
 	long	result;
 	int		sign;
@@ -18,11 +18,11 @@ int	ft_atoi(char *str)
 	while (*str >= '0' && *str <= '9')
 	{
 		result = result * 10 + *str - 48;
-		str++;
+		str++;/*
 		if (result * sign > 2147483647) // We need a way to handle these errors
-			return (-1);
+			write ();
 		else if (result * sign < -2147483648)
-			return (0);
+			return (0);*/
 	}
 	return (result * sign);
 }
@@ -36,7 +36,8 @@ int	arg_check(char **argv)
 	i = 1;
     while (argv[i] != NULL)
     {
-        
+        if (ft_atoi(argv[i]) > 2147483647 || ft_atoi(argv[i]) < -2147483648)
+            return (0); 
         sign = 0;
         j = 0;
         while (argv[i][j] != '\0')
@@ -61,26 +62,26 @@ int	order_check(char **argv)
 	int	i;
 	int j;
 
-    i = 1;
-    while(argv[i] != NULL)
+    i = 0;
+    
+    while(argv[++i] != NULL)
     {
         j = i + 1;
         while(argv[j] != NULL)
         {
             if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
+            {
+                write(1, "Error\n", 6);
                 return (1);
+            }
             j++;
         }
-        i++;
     }
-	i = 2;
-    while (argv[i] != NULL)
-    {
+	i = 1;
+    
+    while (argv[++i] != NULL)
         if (ft_atoi(argv[i]) < ft_atoi(argv[i - 1]))
             return (0);
-        i++;
-    } 
-
     return (1);
 }
 
@@ -89,7 +90,7 @@ int main(int argc, char **argv)
 	t_list *a;
 	t_list *b;
 	
-	if (argc > 2)
+	if (argc > 2){
 		if (arg_check(argv))
 		{
             if (!order_check(argv))
@@ -99,15 +100,16 @@ int main(int argc, char **argv)
                 while (*(++argv) != NULL)
                     ft_lstadd_back(&a, ft_lstnew(ft_atoi(*argv)));
                 b = NULL;
-                if (argc <= 5)
-                    little_sort(a, &b, argc, 'a');
+                if (argc == 3 || argc == 4)
+                    little_sort(&a, --argc, 'a');
                 else
-                    big_sort(&a, &b, 'a');
+                    medium_sort(&a, &b);
                 ft_lstclear(&a);
-                ft_lstclear(&a);
-                return (0);	
+                ft_lstclear(&b);
 			}
 		}
-	return (0);
+        else
+            write(1, "Error\n", 6);
+    }
 }
 

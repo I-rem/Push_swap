@@ -51,7 +51,6 @@ int find_pos(t_list *lst, int num)
 void medium_sort(t_list **lst, t_list **lst_b)
 {
     int min;
-    t_list *temp;
 
     if (is_sorted(*lst) && *lst_b != NULL)
     {
@@ -60,17 +59,9 @@ void medium_sort(t_list **lst, t_list **lst_b)
     }
     if (!is_sorted(*lst))
     {   
-        if (ft_lstsize(*lst) == 4){
-            little_sort(lst, 4, 'a');
-        }
-        temp = *lst;
-        min = temp->content;
-        while (temp->next != NULL)
-        {
-            if (temp->next->content < min)
-                min = temp->next->content;
-            temp = temp->next;
-        }
+        if (ft_lstsize(*lst) == 3)
+            little_sort(lst, 3, 'a');
+        min = find_min(*lst);
         if ((*lst)->content == min)
             push(lst, lst_b, 'b');
         else if ((*lst)->next->content == min)
@@ -82,13 +73,17 @@ void medium_sort(t_list **lst, t_list **lst_b)
         medium_sort(lst, lst_b);
     }
 }
+/*
+void big_sort (t_list **lst, t_list **lst_b)
+{
 
-
+}
+*/
 void little_sort(t_list **lst, int argc, char mode)
 {
-    if (argc == 3)
+    if (argc == 2)
         swap(lst, mode);
-    else if (argc == 4)
+    else if (argc == 3)
     {
         if ((*lst)->content > (*lst)->next->content && (*lst)->content > (*lst)->next->next->content)
         {
