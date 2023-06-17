@@ -1,19 +1,48 @@
 #include "push_swap.h"
+#include <stdio.h>
 
-void	make_positive(t_list **a)
+void    make_positive(t_list **a)
 {
-	int 	min;
-	t_list	*temp;
-	
-	min = find_min(*a);
+    t_list  *temp;
+
+    int min = find_min(*a);
     temp = *a;
-    
     while (temp)
     {
-        temp->content -= min;
+        temp -> content-= min;
+        temp = temp -> next;
+    }
+    
+}
+
+/*
+void make_positive(t_list **a, int index)
+{
+    int min = find_min(*a);
+    t_list *temp = *a;
+
+    while (temp)
+    {
+        if (temp->content == min && temp->checked == 0)
+        {   
+            temp->content = index;
+            temp->checked = 1;
+            break;
+        }
+        temp = temp->next;
+    }
+    temp = *a;
+    while (temp)
+    {
+        if (temp->checked == 0)
+        {
+            make_positive(a, ++index);
+            return ;
+        }
         temp = temp->next;
     }
 }
+*/
 
 void	right_shift(t_list **a)
 {
@@ -56,18 +85,22 @@ int all_zero(t_list *a)
     return (1);
 }
 
-void	radix_sort(t_list **a, t_list **b)
+void	radix_sort(t_list **a, t_list **b) // WHY DONT YOU WORK?
 {
-	// Make every num in list >= 0
     //make_positive(a);
-	// is sorted check? Or we can stop when every num is 0
-   // int num;
-	while(!all_zero(*a))
+   int top;
+   t_list   *temp;
+   
+	while(find_max(*a))
 	{
-        /*num = (*a) -> content + '0';
-        write(1, &num, 1); 
-        write(1," ",1);*/
-		// Push b if num % 2 == 0
+        temp = *a;
+        while (temp != NULL && temp -> content % 2 == 0)
+            temp = temp -> next;
+        if (temp != NULL)
+            top = temp -> content;
+        else
+            top = 0;
+        
 		while (has_lastbit_zero(*a))
         {
             //TO DO: Stop if a is already sorted
@@ -76,10 +109,15 @@ void	radix_sort(t_list **a, t_list **b)
 			else
 				rotate(a, 'a');
         }
-		// Push back a
+        //printf("%d ", top);
+        if (top != 0){
+            while ((*a)->content != top){
+                
+                rotate(a, 'a');
+            }
+        }
 		while (ft_lstsize(*b) > 0)
 			push(b, a, 'a');
-		// Right Shift
         right_shift(a);
 	}
 }
