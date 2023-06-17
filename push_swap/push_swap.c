@@ -18,11 +18,7 @@ long	ft_atoi(char *str)
 	while (*str >= '0' && *str <= '9')
 	{
 		result = result * 10 + *str - 48;
-		str++;/*
-		if (result * sign > 2147483647) // We need a way to handle these errors
-			write ();
-		else if (result * sign < -2147483648)
-			return (0);*/
+		str++;
 	}
 	return (result * sign);
 }
@@ -92,7 +88,6 @@ int main(int argc, char **argv)
 	
 	if (argc > 2){
 		if (arg_check(argv))
-		{
             if (!order_check(argv))
 			{
                 a = ft_lstnew(ft_atoi(argv[1]));
@@ -102,12 +97,13 @@ int main(int argc, char **argv)
                 b = NULL;
                 if (argc == 3 || argc == 4)
                     little_sort(&a, --argc, 'a');
-                else
+                else if (argc == 5 || argc == 6)
                     medium_sort(&a, &b);
+                else
+                	radix_sort(&a, &b);
                 ft_lstclear(&a);
                 ft_lstclear(&b);
 			}
-		}
         else
             write(1, "Error\n", 6);
     }
