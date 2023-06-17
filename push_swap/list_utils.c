@@ -9,6 +9,7 @@ t_list	*ft_lstnew(int content)
 		return (NULL);
 	new -> next = NULL;
 	new -> content = content;
+    new -> checked = 0;
 	return (new);
 }
 

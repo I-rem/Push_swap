@@ -15,7 +15,6 @@ void    make_positive(t_list **a)
     
 }
 
-
 void	right_shift(t_list **a)
 {
 	 t_list *temp = *a;
@@ -57,7 +56,7 @@ int all_zero(t_list *a)
 
 void	radix_sort(t_list **a, t_list **b) // WHY DONT YOU WORK?
 {
-    //make_positive(a);
+    make_positive(a); //TO DO:  maybe find a different way to do this
    t_list   *temp;
    
 	while(find_max(*a))

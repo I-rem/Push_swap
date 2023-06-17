@@ -6,7 +6,8 @@
 
 typedef struct s_list
 { 
-	long			content;
+	int             content;
+    int             checked;
 	struct s_list	*next;
 }	t_list;
 
@@ -22,5 +23,8 @@ void    rotate(t_list **stack, char mode);
 void    reverse_rotate(t_list **stack, char mode);
 void	medium_sort(t_list **lst, t_list **lst_b);
 void	radix_sort(t_list **a, t_list **b);
+int     is_sorted(t_list *lst);
+int     find_min(t_list *lst);
+int find_max(t_list *lst);
 #endif
 
