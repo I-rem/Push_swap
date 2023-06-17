@@ -35,6 +35,7 @@ int find_max(t_list *lst)
     }
     return (max);
 }
+
 int find_pos(t_list *lst, int num)
 {
     int pos = 0;
@@ -73,12 +74,7 @@ void medium_sort(t_list **lst, t_list **lst_b)
         medium_sort(lst, lst_b);
     }
 }
-/*
-void big_sort (t_list **lst, t_list **lst_b)
-{
 
-}
-*/
 void little_sort(t_list **lst, int argc, char mode)
 {
     if (argc == 2)

@@ -1,10 +1,5 @@
 #include "push_swap.h"
-/*
-void	delete()
-{
-	
-}
-*/
+
 void swap(t_list **stack, char mode)
 {
     t_list *temp;
