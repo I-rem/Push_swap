@@ -21,5 +21,6 @@ void    push(t_list **src_stack, t_list **dst_stack, char mode);
 void    rotate(t_list **stack, char mode);
 void    reverse_rotate(t_list **stack, char mode);
 void	medium_sort(t_list **lst, t_list **lst_b);
+void	radix_sort(t_list **a, t_list **b);
 #endif
 
