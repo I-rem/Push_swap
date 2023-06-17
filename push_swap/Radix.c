@@ -2,7 +2,17 @@
 
 void	make_positive(t_list **a)
 {
+	int 	min;
+	t_list	*temp;
 	
+	min = find_mind(*a);
+    temp = *a;
+    
+    while (temp)
+    {
+        temp->content -= min_val;
+        temp = temp->next;
+    }
 }
 
 void	right_shift(t_list **a)
