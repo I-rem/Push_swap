@@ -25,6 +25,12 @@ void	medium_sort(t_list **lst, t_list **lst_b);
 void	radix_sort(t_list **a, t_list **b);
 int     is_sorted(t_list *lst);
 int     find_min(t_list *lst);
-int find_max(t_list *lst);
+int		find_max(t_list *lst);
+int		find_pos(t_list *lst, int num);
+int		is_sorted(t_list *lst);
+void    make_positive(t_list **a);
+void	right_shift(t_list **a);
+int		has_lastbit_zero(t_list *a);
+int		all_zero(t_list *a);
 #endif
 

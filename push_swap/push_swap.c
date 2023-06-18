@@ -29,8 +29,8 @@ int	arg_check(char **argv)
     int j;
 	int sign;
 
-	i = 1;
-    while (argv[i] != NULL)
+	i = 0;
+    while (argv[++i] != NULL)
     {
         if (ft_atoi(argv[i]) > 2147483647 || ft_atoi(argv[i]) < -2147483648 || argv[i][0] == 0)
             return (0); 
@@ -48,7 +48,6 @@ int	arg_check(char **argv)
                 return (0);
             j++;
         }
-        i++;
     }
 	return (1);
 }
@@ -59,7 +58,6 @@ int	order_check(char **argv)
 	int j;
 
     i = 0;
-    
     while(argv[++i] != NULL)
     {
         j = i + 1;
@@ -74,7 +72,6 @@ int	order_check(char **argv)
         }
     }
 	i = 1;
-    
     while (argv[++i] != NULL)
         if (ft_atoi(argv[i]) < ft_atoi(argv[i - 1]))
             return (0);
@@ -86,11 +83,10 @@ int main(int argc, char **argv)
 	t_list *a;
 	t_list *b;
 	
-	if (argc > 2){
-		if (arg_check(argv))
+	if (argc > 1)
+	{
+		if (arg_check(argv) && !order_check(argv))
         {
-            if (!order_check(argv))
-			{
                 a = ft_lstnew(ft_atoi(argv[1]));
                 argv++;
                 while (*(++argv) != NULL)
@@ -104,9 +100,8 @@ int main(int argc, char **argv)
                 	radix_sort(&a, &b);
                 ft_lstclear(&a);
                 ft_lstclear(&b);
-			}
-        }
-        else
+		}
+        else if (!arg_check(argv))
             write(1, "Error\n", 6);
     }
 }
