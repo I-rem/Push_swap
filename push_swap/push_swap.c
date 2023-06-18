@@ -32,7 +32,7 @@ int	arg_check(char **argv)
 	i = 1;
     while (argv[i] != NULL)
     {
-        if (ft_atoi(argv[i]) > 2147483647 || ft_atoi(argv[i]) < -2147483648)
+        if (ft_atoi(argv[i]) > 2147483647 || ft_atoi(argv[i]) < -2147483648 || argv[i][0] == 0)
             return (0); 
         sign = 0;
         j = 0;
@@ -88,6 +88,7 @@ int main(int argc, char **argv)
 	
 	if (argc > 2){
 		if (arg_check(argv))
+        {
             if (!order_check(argv))
 			{
                 a = ft_lstnew(ft_atoi(argv[1]));
@@ -104,6 +105,7 @@ int main(int argc, char **argv)
                 ft_lstclear(&a);
                 ft_lstclear(&b);
 			}
+        }
         else
             write(1, "Error\n", 6);
     }
