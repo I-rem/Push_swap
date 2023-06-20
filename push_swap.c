@@ -50,10 +50,10 @@ int	arg_check(char **argv) // TO DO: Needs to work with the new system
 		while (argv[i][++j] != '\0')
 		{
 			if ((argv[i][j] == '-' || argv[i][j] == '+')
-				&& (argv[i][j + 1] > '9' || argv[i][j + 1] < '0'))
+				&& !(argv[i][j + 1] <= '9' && argv[i][j + 1] >= '0'))
 			   return (0);
-			else if (argv[i][j] != ' ' &&
-				(argv[i][j] < '0' || argv[i][j] > '9'))
+			else if (argv[i][j] != ' ' && argv[i][j] != '-' && argv[i][j] != '+'
+					&& (argv[i][j] < '0' || argv[i][j] > '9'))
 			return (0);
 		}
 	}
