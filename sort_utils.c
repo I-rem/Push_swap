@@ -72,26 +72,27 @@ int	find_pos(t_list *lst, int num)
 	return (-1);
 }
 
-/*
-int	duplicate_check(char **argv)
-{
-	int	i;
-	int	j;
 
-	i = 0;
-	while (argv[++i] != NULL)
+int	duplicate_check(t_list **a)
+{
+	t_list	*i;
+	t_list	*j;
+
+	i = *a;
+	while (i != NULL)
 	{
-		j = i + 1;
-		while (argv[j] != NULL)
+		j = i -> next;
+		while (j != NULL)
 		{
-			if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
+			if (i -> content == j -> content)
 			{
 				write(1, "Error\n", 6);
 				return (1);
 			}
-			j++;
+			j = j -> next;
 		}
+		i = i -> next;
 	}
 	return (1);
 }
-*/
+
