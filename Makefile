@@ -1,23 +1,29 @@
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-SRC = push_swap.c
-OBJ = $(SRC:.c=.o)
-EXECUTABLE = push_swap
+NAME        := push_swap
+CC        := gcc
+FLAGS    := -Wall -Wextra -Werror 
 
-all: $(EXECUTABLE)
+SRCS        :=      list_utils.c push_swap_utils.c push_swap.c radix_utils.c sort_utils.c sorts.c
+                          
+OBJS        := $(SRCS:.c=.o)
 
-$(EXECUTABLE): $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $^
+.c.o:
+	${CC} ${FLAGS} -c $< -o ${<:.c=.o}
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c -o $@ $<
+RM		    := rm -f
+
+${NAME}:	${OBJS}
+			${CC} ${FLAGS} -o ${NAME} ${OBJS}
+
+all:		${NAME}
+
+bonus:		all
 
 clean:
-	rm -f $(OBJ)
+			@ ${RM} *.o
 
-fclean: clean
-	rm -f $(EXECUTABLE)
+fclean:		clean
+			@ ${RM} ${NAME}
 
-re: fclean all
+re:			fclean all
 
-.PHONY: all clean fclean re
+.PHONY:		all clean fclean re
