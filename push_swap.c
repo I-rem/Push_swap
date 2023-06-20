@@ -89,7 +89,8 @@ int	main(int argc, char **argv)
 		while (*(++argv) != NULL)
 			ft_atoi(*argv, &a);
 		b = NULL;
-		sort(ft_lstsize(a), &a, &b);
+		if (!duplicate_check(&a))
+			sort(ft_lstsize(a), &a, &b);
 		ft_lstclear(&a);
 		ft_lstclear(&b);
 	}

@@ -12,6 +12,32 @@
 
 #include "push_swap.h"
 
+void	make_index(t_list **a)	
+{
+	int		index;
+	int		min;
+	t_list	*temp;
+	
+	temp = *a;
+	index = 0;
+	while (temp != NULL)
+	{
+		while (temp->content <= index)
+			temp = temp -> next;
+		min = a->content;
+		if (temp->content < min && temp->content > index)
+		{
+			min = lst->content;
+			index++;
+			temp -> content = index;
+			temp = *a;
+		}
+		else
+			temp = temp->next;
+	}
+	index = 0;
+}
+
 void	make_positive(t_list **a)
 {
 	t_list	*temp;
@@ -24,6 +50,7 @@ void	make_positive(t_list **a)
 		temp -> content -= min;
 		temp = temp -> next;
 	}
+	make_index(a);
 }
 
 void	right_shift(t_list **a)
