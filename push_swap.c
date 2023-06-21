@@ -12,10 +12,20 @@
 
 #include "push_swap.h"
 
+void	exit_program(t_list **a, t_list **b)
+{
+	if (a != NULL)
+		ft_lstclear(a);
+	if (b != NULL)
+		ft_lstclear(b);
+	write(2, "Error\n", 6);
+	exit(EXIT_FAILURE);
+}
+
 void	ft_atoi(char *str, t_list **a)
 {
 	long		result;
-	int			sign;
+	long		sign;
 
 	while (*str != '\0')
 	{
@@ -23,22 +33,25 @@ void	ft_atoi(char *str, t_list **a)
 		sign = 1;
 		while (*str == 32 || (*str >= 9 && *str <= 13))
 			str++;
-		if (*str == '-')
-			sign *= -1;
-		if (*str == '-' || *str == '+')
-			str++;	
-		while (*str >= '0' && *str <= '9')
+		if (*str != '\0')
 		{
-			result = result * 10 + *str - 48;
-			str++;
+			if (*str == '-')
+				sign *= -1;
+			if (*str == '-' || *str == '+')
+				str++;	
+			while (*str >= '0' && *str <= '9')
+			{
+				result = result * 10 + *str - 48;
+				str++;
+			}
+			while (*str == 32 || (*str >= 9 && *str <= 12))
+				str++;
+			ft_lstadd_back(a, ft_lstnew(result * sign));
 		}
-		while (*str == 32 || (*str >= 9 && *str <= 12))
-			str++;
-		ft_lstadd_back(a, ft_lstnew(result * sign));
 	}
 }
 
-int	arg_check(char **argv) // TO DO: Needs to work with the new system
+int	arg_check(char **argv)
 {
 	int	i;
 	int	j;
@@ -89,11 +102,14 @@ int	main(int argc, char **argv)
 		while (*(++argv) != NULL)
 			ft_atoi(*argv, &a);
 		b = NULL;
+		if (a == NULL)
+			exit_program(NULL, NULL);
 		if (!duplicate_check(&a))
 			sort(ft_lstsize(a), &a, &b);
 		ft_lstclear(&a);
 		ft_lstclear(&b);
 	}
 	else
-		write(1, "Error\n", 6);
+		exit_program(NULL, NULL);
 }
+

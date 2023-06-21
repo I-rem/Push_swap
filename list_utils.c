@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-t_list	*ft_lstnew(int content)
+t_list	*ft_lstnew(long content)
 {
 	t_list	*new;
 
@@ -80,3 +80,4 @@ void	ft_lstclear(t_list **lst)
 	}
 	*lst = NULL;
 }
+

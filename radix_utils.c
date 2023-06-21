@@ -20,22 +20,21 @@ void	make_index(t_list **a)
 	
 	temp = *a;
 	index = 0;
-	while (temp != NULL)
+	min = find_min2(*a, index);
+	
+	while (min != 0)
 	{
-		while (temp->content <= index)
+		while (temp -> content != min && temp != NULL)
 			temp = temp -> next;
-		min = a->content;
-		if (temp->content < min && temp->content > index)
+		if (temp != NULL)
 		{
-			min = lst->content;
 			index++;
 			temp -> content = index;
 			temp = *a;
 		}
-		else
-			temp = temp->next;
+		min = find_min2(*a, index);;
 	}
-	index = 0;
+	write(1, "test", 4);
 }
 
 void	make_positive(t_list **a)
@@ -92,3 +91,4 @@ int	all_zero(t_list *a)
 	}
 	return (1);
 }
+

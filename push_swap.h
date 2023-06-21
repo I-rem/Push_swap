@@ -18,12 +18,12 @@
 
 typedef struct s_list
 {
-	int				content;
+	long				content;
 	int					checked;
 	struct s_list		*next;
 }	t_list;
 
-t_list	*ft_lstnew(int content);
+t_list	*ft_lstnew(long content);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
@@ -38,10 +38,13 @@ void	radix_sort(t_list **a, t_list **b);
 int		is_sorted(t_list *lst);
 int		find_min(t_list *lst);
 int		find_max(t_list *lst);
-int		find_pos(t_list *lst, int num);
+int		find_pos(t_list *lst, long num);
 int		is_sorted(t_list *lst);
 void	make_positive(t_list **a);
 void	right_shift(t_list **a);
 int		has_lastbit_zero(t_list *a);
 int		all_zero(t_list *a);
+int		duplicate_check(t_list **a);
+int		find_min2(t_list *a, int index);
 #endif
+

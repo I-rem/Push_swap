@@ -17,9 +17,9 @@ int	is_sorted(t_list *lst)
 	while (lst->next != NULL)
 	{
 		if (lst->content > 2147483647
-			|| lst->content < -2147483648) // Not sure if this will work
+			|| lst->content < -2147483648)
 		{
-			write(1, "Error\n", 6);
+			write(2, "Error\n", 6);
 			return (1);
 		}
 		else if (lst->content > lst->next->content)
@@ -31,7 +31,7 @@ int	is_sorted(t_list *lst)
 
 int	find_min(t_list *lst)
 {
-	int	min;
+	long	min;
 
 	min = lst->content;
 	while (lst != NULL)
@@ -45,7 +45,7 @@ int	find_min(t_list *lst)
 
 int	find_max(t_list *lst)
 {
-	int	max;
+	long	max;
 
 	max = lst->content;
 	while (lst != NULL)
@@ -57,7 +57,7 @@ int	find_max(t_list *lst)
 	return (max);
 }
 
-int	find_pos(t_list *lst, int num)
+int	find_pos(t_list *lst, long num)
 {
 	int	pos;
 
@@ -86,13 +86,14 @@ int	duplicate_check(t_list **a)
 		{
 			if (i -> content == j -> content)
 			{
-				write(1, "Error\n", 6);
+				write(2, "Error\n", 6);
 				return (1);
 			}
 			j = j -> next;
 		}
 		i = i -> next;
 	}
-	return (1);
+	return (0);
 }
+
 

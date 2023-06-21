@@ -75,3 +75,4 @@ void	reverse_rotate(t_list **stack, char mode)
 	write(1, &mode, 1);
 	write(1, "\n", 1);
 }
+

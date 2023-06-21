@@ -12,6 +12,25 @@
 
 #include "push_swap.h"
 
+int	find_min2(t_list *a, int index)
+{
+	long	min;
+
+	while (a != NULL && a->content <= index)
+		a = a->next;
+	if (a == NULL)
+		min = 0;
+	else
+		min = a->content;
+	while (a != NULL)
+	{
+		if (a->content < min && a->content > index)
+			min = a->content;
+		a = a->next;
+	}
+	return (min);
+}
+
 void	medium_sort(t_list **lst, t_list **lst_b)
 {
 	int	min;
@@ -100,3 +119,4 @@ void	radix_sort(t_list **a, t_list **b)
 		right_shift(a);
 	}
 }
+
