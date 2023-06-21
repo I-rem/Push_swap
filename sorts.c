@@ -16,7 +16,7 @@ int	find_min2(t_list *a, int index)
 {
 	int	min;
 
-	while (a->content <= index && a != NULL)
+	while (a != NULL && a->content <= index)
 		a = a->next;
 	if (a == NULL)
 		min = 0;
