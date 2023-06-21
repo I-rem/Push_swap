@@ -16,15 +16,19 @@ int	find_min2(t_list *a, int index)
 {
 	int	min;
 
+	while (a->content <= index && a != NULL)
+		a = a->next;
+	if (a == NULL)
+		min = 0;
+	else
+		min = a->content;
 	while (a != NULL)
 	{
-		while (a->content <= index)
-			a = a -> next;
-		min = a->content;
 		if (a->content < min && a->content > index)
-			min = temp->content;
-		temp = temp->next;
+			min = a->content;
+		a = a->next;
 	}
+	return (min);
 }
 
 void	medium_sort(t_list **lst, t_list **lst_b)
