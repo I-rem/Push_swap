@@ -93,6 +93,6 @@ int	duplicate_check(t_list **a)
 		}
 		i = i -> next;
 	}
-	return (1);
+	return (0);
 }
 

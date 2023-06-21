@@ -14,8 +14,8 @@
 
 void	exit_program(t_list **a, t_list **b)
 {
-	ft_lstclear(&a);
-	ft_lstclear(&b);
+	ft_lstclear(a);
+	ft_lstclear(b);
 	write(3, "Error\n", 6);
 	exit(EXIT_FAILURE);
 }

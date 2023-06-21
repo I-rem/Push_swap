@@ -12,6 +12,21 @@
 
 #include "push_swap.h"
 
+int	find_min2(t_list *a, int index)
+{
+	int	min;
+
+	while (a != NULL)
+	{
+		while (a->content <= index)
+			a = a -> next;
+		min = a->content;
+		if (a->content < min && a->content > index)
+			min = temp->content;
+		temp = temp->next;
+	}
+}
+
 void	medium_sort(t_list **lst, t_list **lst_b)
 {
 	int	min;

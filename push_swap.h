@@ -44,4 +44,6 @@ void	make_positive(t_list **a);
 void	right_shift(t_list **a);
 int		has_lastbit_zero(t_list *a);
 int		all_zero(t_list *a);
+int		duplicate_check(t_list **a);
+int		find_min2(t_list *a, int index);
 #endif
