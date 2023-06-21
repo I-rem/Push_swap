@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	find_min2(t_list *a, int index)
+long	find_min2(t_list *a, int index)
 {
 	long	min;
 

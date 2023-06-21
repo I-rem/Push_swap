@@ -14,6 +14,12 @@
 
 int	is_sorted(t_list *lst)
 {
+	if (lst->content > 2147483647
+		|| lst->content < -2147483648)
+	{
+		write(2, "Error\n", 6);
+		return (1);
+	}
 	while (lst->next != NULL)
 	{
 		if (lst->content > 2147483647
@@ -29,7 +35,7 @@ int	is_sorted(t_list *lst)
 	return (1);
 }
 
-int	find_min(t_list *lst)
+long	find_min(t_list *lst)
 {
 	long	min;
 
@@ -43,7 +49,7 @@ int	find_min(t_list *lst)
 	return (min);
 }
 
-int	find_max(t_list *lst)
+long	find_max(t_list *lst)
 {
 	long	max;
 

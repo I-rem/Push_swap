@@ -86,7 +86,7 @@ void	sort(int argc, t_list **a, t_list **b)
 			make_positive(a);
 			radix_sort(a, b);
 		}
-	};
+	}
 }
 
 int	main(int argc, char **argv)

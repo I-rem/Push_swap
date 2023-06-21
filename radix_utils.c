@@ -14,8 +14,8 @@
 
 void	make_index(t_list **a)	
 {
-	int		index;
-	int		min;
+	long	    index;
+	long		min;
 	t_list	*temp;
 	
 	temp = *a;
@@ -34,13 +34,12 @@ void	make_index(t_list **a)
 		}
 		min = find_min2(*a, index);;
 	}
-	write(1, "test", 4);
 }
 
 void	make_positive(t_list **a)
 {
 	t_list	*temp;
-	int		min;
+	long	min;
 
 	min = find_min(*a);
 	temp = *a;
