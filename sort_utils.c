@@ -14,15 +14,19 @@
 
 int	is_sorted(t_list *lst)
 {
-	if (lst->content > 2147483647
-		|| lst->content < -2147483648)
-		return (2);
+	t_list	*temp;
+
+	temp = lst;
+	while (temp)
+	{
+		if (temp->content > 2147483647
+			|| temp->content < -2147483648)
+			return (2);
+		temp = temp -> next;
+	}
 	while (lst->next != NULL)
 	{
-		if (lst->content > 2147483647
-			|| lst->content < -2147483648)
-			return (2);
-		else if (lst->content > lst->next->content)
+		if (lst->content > lst->next->content)
 			return (0);
 		lst = lst->next;
 	}
