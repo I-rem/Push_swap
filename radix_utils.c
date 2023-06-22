@@ -12,16 +12,15 @@
 
 #include "push_swap.h"
 
-void	make_index(t_list **a)	
+void	make_index(t_list **a)
 {
-	long	    index;
-	long		min;
+	long	index;
+	long	min;
 	t_list	*temp;
-	
+
 	temp = *a;
 	index = 0;
 	min = find_min2(*a, index);
-	
 	while (min != 0)
 	{
 		while (temp -> content != min && temp != NULL)
@@ -32,7 +31,7 @@ void	make_index(t_list **a)
 			temp -> content = index;
 			temp = *a;
 		}
-		min = find_min2(*a, index);;
+		min = find_min2(*a, index);
 	}
 }
 
@@ -90,4 +89,3 @@ int	all_zero(t_list *a)
 	}
 	return (1);
 }
-

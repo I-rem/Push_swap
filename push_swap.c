@@ -38,7 +38,7 @@ void	ft_atoi(char *str, t_list **a)
 			if (*str == '-')
 				sign *= -1;
 			if (*str == '-' || *str == '+')
-				str++;	
+				str++;
 			while (*str >= '0' && *str <= '9')
 			{
 				result = result * 10 + *str - 48;
@@ -64,10 +64,13 @@ int	arg_check(char **argv)
 		{
 			if ((argv[i][j] == '-' || argv[i][j] == '+')
 				&& !(argv[i][j + 1] <= '9' && argv[i][j + 1] >= '0'))
-			   return (0);
+				return (0);
+			else if ((argv[i][j] == '-' || argv[i][j] == '+') &&
+					(j != 0 && argv[i][j - 1] != ' '))
+				return (0);
 			else if (argv[i][j] != ' ' && argv[i][j] != '-' && argv[i][j] != '+'
 					&& (argv[i][j] < '0' || argv[i][j] > '9'))
-			return (0);
+				return (0);
 		}
 	}
 	return (1);
@@ -75,6 +78,8 @@ int	arg_check(char **argv)
 
 void	sort(int argc, t_list **a, t_list **b)
 {
+	if (is_sorted(*a) == 2)
+		exit_program(a, NULL);
 	if (argc == 2 || argc == 3)
 		little_sort(a, argc, 'a');
 	else if (argc == 4 || argc == 5)
@@ -104,12 +109,12 @@ int	main(int argc, char **argv)
 		b = NULL;
 		if (a == NULL)
 			exit_program(NULL, NULL);
-		if (!duplicate_check(&a))
-			sort(ft_lstsize(a), &a, &b);
+		else if (duplicate_check(&a))
+			exit_program(&a, NULL);
+		sort(ft_lstsize(a), &a, &b);
 		ft_lstclear(&a);
 		ft_lstclear(&b);
 	}
 	else
 		exit_program(NULL, NULL);
 }
-
